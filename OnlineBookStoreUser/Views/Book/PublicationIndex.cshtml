@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "PublicationIndex";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>PublicationIndex</h2>
+
+<div class="container">
+    <!--Thumbnail Starts-->
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="@item.BookImage" class="bd-placeholder-img card-image-top" />
+                    <div class="card-body">
+                        <p class="card-text">@item.BookName</p>
+                        <p class="card-text">@item.BookType</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                @*<button type="button" class="btn btn-sm btn-outline-secondary">View Details</button>*@
+                                @*<button type="button" class="btn btn-sm btn-outline-secondary">Edit Deatails</button>*@
+                                <a asp-controller="Cart" asp-action="Details" asp-route-id="@item.BookId" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                <a asp-controller="Cart" asp-action="Buy" asp-route-id="@item.BookId" class="btn btn-sm btn-outline-secondary"
+                                   onclick="myFunction()">
+                                    Add to Cart
+
+                                    <script>
+                                        function myFunction() {
+                                            swal("Book added to cart!");
+                                        }
+                                    </script>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+    <!--Thumbnail Starts-->
+</div>
